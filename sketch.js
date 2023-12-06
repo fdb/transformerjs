@@ -7,13 +7,13 @@ let json;
 let done = false;
 
 async function setup() {
-  const res = await fetch("embeddings/subjects.json");
+  const res = await fetch("embeddings/industries.json");
   json = await res.json();
   createCanvas(800, 800);
   randomSeed(1);
   umap = new UMAP({
-    nNeighbors: 50,
-    minDist: 0.02,
+    nNeighbors: 15,
+    minDist: 0.1,
     nComponents: 2,
     random: random,
   });
