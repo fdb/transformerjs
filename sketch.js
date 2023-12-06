@@ -7,13 +7,13 @@ let json;
 let done = false;
 
 async function setup() {
-  const res = await fetch("embeddings/menu-items.json");
+  const res = await fetch("embeddings/subjects.json");
   json = await res.json();
   createCanvas(800, 800);
   randomSeed(1);
   umap = new UMAP({
-    nNeighbors: 20,
-    minDist: 0.1,
+    nNeighbors: 50,
+    minDist: 0.02,
     nComponents: 2,
     random: random,
   });
@@ -56,8 +56,8 @@ function draw() {
     fill(red, green, blue);
     ellipse(x, y, 5, 5);
     if (viewScale > 2.0) {
-      textAlign(CENTER, CENTER);
-      text(name, x, y + 10);
+      textAlign(CENTER, TOP);
+      text(name, x - 50, y + 10, 100);
     }
   }
 }
